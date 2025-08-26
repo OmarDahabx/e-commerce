@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@utility container{
+  margin-inline:auto;
+}
+
+@layer components{
+  .btn{
+  @apply disabled:bg-gray-600 disabled:cursor-not-allowed bg-green-700 border-y-green-900 text-white py-2 mt-2 w-full cursor-pointer hover:bg-green-900 transition-all duration-300
+}
+}
+body {
+  font-family: "Montserrat", serif;
+}
