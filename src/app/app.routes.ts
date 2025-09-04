@@ -11,14 +11,16 @@ import { BrandsComponent } from './features/brands/brands.component';
 import { CategoriesComponent } from './features/categories/categories.component';
 import { DetailsComponent } from './features/details/details.component';
 import { CheckoutComponent } from './features/checkout/checkout.component';
+import { authGuard } from './core/guards/authGuard/auth-guard';
+import { isLoggedGuard } from './core/guards/isLogged/is-logged-guard';
 
 export const routes: Routes = [
     {path:'' , redirectTo:'home', pathMatch:'full'},
-    {path:'', component:AuthLayoutComponent, children:[
+    {path:'', component:AuthLayoutComponent, canActivate:[isLoggedGuard] , children:[
         {path:'login' , component:LoginComponent , title:'Login Page'},
         {path:'register' , component:RegisterComponent , title:'Register Page'}
     ]},
-    {path:'' , component:BlankLayoutComponent, children:[
+    {path:'' , component:BlankLayoutComponent, canActivate:[authGuard] , children:[
         {path:'home' , component:HomeComponent , title:'Home Page'},
         {path:'cart' , component:CartComponent , title:'Cart Page'},
         {path:'products' , component:ProductsComponent , title:'Products Page'},
